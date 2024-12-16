@@ -1,3 +1,3 @@
-module github.com/vitorfloriano/arundels-pgtools/hello
+module github.com/vitorfloriano/arundels-pogtools/hello
 
 go 1.23.2
