@@ -1,4 +1,4 @@
-package github.com/vitorfloriano/arundels-pogtools/hello
+package hello
 
 import (
 	"io"
