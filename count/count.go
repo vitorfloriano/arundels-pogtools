@@ -25,6 +25,16 @@ func WithInput(input io.Reader) option {
 	}
 }
 
+func WithOutput(output io.Writer) option {
+	return func(c *counter) error {
+		if output == nil {
+			return errors.New("nil output writer")
+		}
+		c.output = output
+		return nil
+	}
+}
+
 func NewCounter(opts ...option) (*counter, error) {
 	c := &counter{
 		input: os.Stdin,
@@ -49,6 +59,9 @@ func (c *counter) Lines() int {
 }
 
 func Main() {
-	c, _ := NewCounter()
+	c, err := NewCounter()
+	if err != nil {
+		panic(err)
+	}
 	fmt.Println(c.Lines())
 }
