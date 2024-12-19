@@ -4,6 +4,9 @@ import (
 	"bytes"
 	"testing"
 	"count"
+	"os"
+
+	"github.com/rogpeppe/go-internal/testscript"
 )
 
 func TestLinesCountsLinesInInput(t *testing.T) {
@@ -53,4 +56,17 @@ func TestWithInputFromArgs_IgnoresEmptyArgs(t *testing.T) {
 	if want != got {
 		t.Errorf("want %d, got %d", want, got)
 	}
+}
+
+func Test(t *testing.T) {
+	t.Parallel()
+	testscript.Run(t, testscript.Params{
+		Dir: "testdata/script",
+	})
+}
+
+func TestMain(m *testing.M) {
+	os.Exit(testscript.RunMain(m, map[string]func() int {
+		"count": count.Main,
+	}))
 }
