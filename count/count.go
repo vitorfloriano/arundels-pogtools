@@ -25,6 +25,20 @@ func WithInput(input io.Reader) option {
 	}
 }
 
+func WithInputFromArgs(args []string) option {
+	return func (c *counter) error {
+		if len(args) < 1 {
+			return nil
+		}
+		f, err := os.Open(args[0])
+		if err != nil {
+			return err
+		}
+		c.input = f
+		return nil
+	}
+}
+
 func WithOutput(output io.Writer) option {
 	return func(c *counter) error {
 		if output == nil {
@@ -59,9 +73,12 @@ func (c *counter) Lines() int {
 }
 
 func Main() {
-	c, err := NewCounter()
+	c, err := NewCounter(
+		WithInputFromArgs(os.Args[1:]),	
+	)
 	if err != nil {
-		panic(err)
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
 	}
 	fmt.Println(c.Lines())
 }
