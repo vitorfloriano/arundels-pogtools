@@ -72,6 +72,12 @@ func (c *counter) Lines() int {
 	return lines
 }
 
+
+func (c *counter) Words() int {
+	words := 0
+	return words
+}
+
 func MainLines() int {
 	c, err := NewCounter(
 		WithInputFromArgs(os.Args[1:]),	
