@@ -72,7 +72,7 @@ func (c *counter) Lines() int {
 	return lines
 }
 
-func Main() int {
+func MainLines() int {
 	c, err := NewCounter(
 		WithInputFromArgs(os.Args[1:]),	
 	)
@@ -81,5 +81,18 @@ func Main() int {
 		return 1
 	}
 	fmt.Println(c.Lines())
+	return 0
+}
+
+
+func MainWords() int {
+	c, err := NewCounter(
+		WithInputFromArgs(os.Args[1:]),	
+	)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		return 1
+	}
+	fmt.Println(c.Words())
 	return 0
 }
