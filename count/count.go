@@ -75,6 +75,11 @@ func (c *counter) Lines() int {
 
 func (c *counter) Words() int {
 	words := 0
+	input := bufio.NewScanner(c.input)
+	input.Split(bufio.ScanWords)
+	for input.Scan() {
+		words++
+	}
 	return words
 }
 

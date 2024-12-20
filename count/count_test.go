@@ -35,7 +35,7 @@ func TestWordsCountsWordsInInput(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	want := 3
+	want := 6
 	got := c.Words()
 	if want != got {
 		t.Errorf("want %d, got %d", want, got)
@@ -84,6 +84,7 @@ func Test(t *testing.T) {
 
 func TestMain(m *testing.M) {
 	os.Exit(testscript.RunMain(m, map[string]func() int {
-		"count": count.MainLines,
+		"lines": count.MainLines,
+		"words": count.MainWords,
 	}))
 }
