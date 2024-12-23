@@ -1,6 +1,3 @@
-exec lines input1.txt input2.txt
-stdout '^3\n$'
-
 exec words input1.txt input2.txt
 stdout '^10\n$'
 

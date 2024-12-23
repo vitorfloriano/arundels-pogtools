@@ -4,3 +4,5 @@
 19/12/2024 - stopped at p.67
 20/12/2024 - stopped at p.75
 21/12/2024 - didn't read anything
+22/12/2024 - didn't read anything
+23/12/2024 - stopped at p. 82 (will probably quit the book here. it's lost its interest from me. examples do no work as expect. instructions are sometimes lacking and unclear. tests won't pass despite following all the code in the book.)

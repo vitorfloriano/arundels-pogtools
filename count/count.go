@@ -6,6 +6,7 @@ import (
 	"os"
 	"fmt"
 	"errors"
+	"flag"
 )
 
 type counter struct {
@@ -81,6 +82,24 @@ func (c *counter) Words() int {
 		words++
 	}
 	return words
+}
+
+func Main() int {
+	lineMode := flag.Bool("lines", false, "Count lines, not words")
+	flag.Parse()
+	c, err := NewCounter(
+		WithInputFromArgs(flag.Args()),
+	)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		return 1
+	}
+	if *lineMode {
+		fmt.Println(c.Lines())
+	} else {
+		fmt.Println(c.Words())
+	}
+	return 0
 }
 
 func MainLines() int {
